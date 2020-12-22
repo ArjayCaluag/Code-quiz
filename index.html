@@ -27,11 +27,32 @@
         </div>
     </nav>
    
+   <!-- Split Main into 3 main divs. One to hold our starting screen, one to present our questions and answers,and last one to present final score + initials input field -->
+    <main>
+        <div id="start-screen">
+            <h1><strong>Coding Quiz Challenge</strong></h1>
+            <p> Try to answer the following code-related questions within the time limit. Keep in mind that incorrect
+                answers will penalize your score/time by ten teconds! </p>
+            <button id="start-button">Start Quiz</button>
+        </div>
 
+        <div id="question-zone">
+            <h1 id="question-title">
+                <div id="question-choices">
+
+                </div>
+        </div>
+
+        <div id="final-zone">
+            <h1> All done! </h1>
+            <p>Your final score is <span id="final-score"></span>.</p>
+            <p>
+                Enter initials: <input type="text" id="initials" max="3" />
+                <button id="submit">Submit</button>
+            </p>
+        </div>
+    </main>
 </body>
-
-
-
 
 
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"
