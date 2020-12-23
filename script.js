@@ -62,6 +62,10 @@ function startQuiz() {
 
 // Pushes out question to the questionTitle h1 div
 function generateQuestion(){
+
+    if (questionIndex >= questions.length){
+        endQuiz()
+    }
     let currentQuestion = questions[questionIndex];
     questionTitleEl.textContent = currentQuestion.question;
     questionChoicesEl.innerHTML = '';
@@ -95,6 +99,18 @@ function validateAnswer(){
 function clockTick(){
     timeRemaining--;
     timerEl.textContent = timeRemaining;
+    if ( timeRemaining == 0){
+        endQuiz();
+    }
+
+}
+
+
+function endQuiz(){
+    clearInterval(timerId)
+    questionZoneEl.style.display = 'none';
+    finalZoneEl.style.display = 'block';
+    finalScoreEl.append(timeRemaining);
 
 }
 
