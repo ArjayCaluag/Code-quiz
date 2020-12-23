@@ -9,6 +9,8 @@ let finalScoreEl = document.querySelector("#final-score")
 let initialsEl = document.querySelector("#initials")
 let startButtonEl = document.querySelector('#start-button')
 
+let timerId;
+let timeRemaining = 75;
 
 // Array of Objects containing question, choices, and answers
 var questions = [
@@ -49,9 +51,17 @@ questionZoneEl.style.display = 'none';
 finalZoneEl.style.display = 'none';
 
 //Hide start zone and display question zone on click
+// Interval is set onclick
 function startQuiz() {
     startScreenEl.style.display = 'none';
     questionZoneEl.style.display = 'block';
+    timerId = setInterval(clockTick, 1000)
+}
+
+// Evaluate countdown timer
+function clockTick(){
+    timeRemaining--;
+    timerEl.textContent = timeRemaining;
 }
 
 startButtonEl.onclick= startQuiz
