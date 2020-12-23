@@ -7,12 +7,13 @@ let questionTitleEl = document.querySelector('#question-title')
 let questionChoicesEl = document.querySelector('#question-choices')
 let finalScoreEl = document.querySelector('#final-score')
 let startButtonEl = document.querySelector('#start-button')
-
-let initialsEl = document.querySelector('#initials')
+let goBackButtonEl = document.querySelector('#go-back')
+// inpKey
+let initialsEl = document.querySelector('#initials') 
+// local storage output
 let highscoreInputEl = document.querySelector('#highscore-text')
+// safe local storage
 let submitButtonEl = document.querySelector('#submit')
-
-
 
 
 let questionIndex = 0;
@@ -123,3 +124,20 @@ function endQuiz(){
 
 startButtonEl.onclick= startQuiz
 
+// Local Storage
+submitButtonEl.onclick = function(){
+    let value = '';
+    let initialsKey = initialsEl.value;
+    console.log(initialsKey)
+    console.log(value)
+
+    localStorage.setItem(value,initialsKey);
+
+    for (let i = 0; i < localStorage.length; i++){
+        let key = localStorage.initialsKey(i);
+        let value = localStorage.getItem(key);
+
+        highscoreInputEl.textContent = value;
+}
+
+}

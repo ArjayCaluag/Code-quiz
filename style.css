@@ -6,5 +6,39 @@ nav {
   main {
     display: flex;
     justify-content: center;
-    margin-top: 50px;
+    margin-top: 70px;
   }
+
+  p {
+    text-align: center;
+  }
+
+  h1{
+    text-align: center;
+  }
+
+  #start-button {
+    margin-left: 450px;
+  
+  }
+
+  button {
+    
+    background-color: purple;
+    color: white;
+    display: block;
+    border: none;
+    
+   
+
+  }
+
+  .button-choice {
+  
+    margin-top: 30px;
+    padding: 20px;
+    width: 100px;
+    text-align: center;
+  }
+
+  
