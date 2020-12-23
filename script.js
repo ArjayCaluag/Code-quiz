@@ -6,8 +6,14 @@ let finalZoneEl = document.querySelector('#final-zone')
 let questionTitleEl = document.querySelector('#question-title')
 let questionChoicesEl = document.querySelector('#question-choices')
 let finalScoreEl = document.querySelector('#final-score')
-let initialsEl = document.querySelector('#initials')
 let startButtonEl = document.querySelector('#start-button')
+
+let initialsEl = document.querySelector('#initials')
+let highscoreInputEl = document.querySelector('#highscore-text')
+let submitButtonEl = document.querySelector('#submit')
+
+
+
 
 let questionIndex = 0;
 let timerId;
@@ -61,6 +67,7 @@ function startQuiz() {
 }
 
 // Pushes out question to the questionTitle h1 div
+// if whole question array is iterated, end game.
 function generateQuestion(){
 
     if (questionIndex >= questions.length){
@@ -86,8 +93,6 @@ function generateQuestion(){
 function validateAnswer(){
     let userChoice = this.value
     let correctAnswer = questions[questionIndex].answer
-
-    console.log(userChoice,correctAnswer)
     if (userChoice !== correctAnswer){
         timeRemaining -=10
     }
@@ -96,6 +101,7 @@ function validateAnswer(){
 }
     
 // Evaluate countdown timer
+// If countdown timer eaches 0, end quiz
 function clockTick(){
     timeRemaining--;
     timerEl.textContent = timeRemaining;
@@ -105,7 +111,7 @@ function clockTick(){
 
 }
 
-
+// stop timer, hide question and final zone, and append time remaining to final score element when endQuiz is called
 function endQuiz(){
     clearInterval(timerId)
     questionZoneEl.style.display = 'none';
@@ -116,3 +122,4 @@ function endQuiz(){
 
 
 startButtonEl.onclick= startQuiz
+
