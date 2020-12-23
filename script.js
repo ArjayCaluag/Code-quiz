@@ -1,14 +1,15 @@
 // Import variables from Dom, our pointers
-let timerEl = document.querySelector("#timer")
-let startScreenEl = document.querySelector("#start-screen")
-let questionZoneEl = document.querySelector("#question-zone")
-let finalZoneEl = document.querySelector("#final-zone")
-let questionquestionEl = document.querySelector("#question-question")
-let questionChoicesEl = document.querySelector("#question-choices")
-let finalScoreEl = document.querySelector("#final-score")
-let initialsEl = document.querySelector("#initials")
+let timerEl = document.querySelector('#timer')
+let startScreenEl = document.querySelector('#start-screen')
+let questionZoneEl = document.querySelector('#question-zone')
+let finalZoneEl = document.querySelector('#final-zone')
+let questionTitleEl = document.querySelector('#question-title')
+let questionChoicesEl = document.querySelector('#question-choices')
+let finalScoreEl = document.querySelector('#final-score')
+let initialsEl = document.querySelector('#initials')
 let startButtonEl = document.querySelector('#start-button')
 
+let questionIndex = 0;
 let timerId;
 let timeRemaining = 75;
 
@@ -56,12 +57,32 @@ function startQuiz() {
     startScreenEl.style.display = 'none';
     questionZoneEl.style.display = 'block';
     timerId = setInterval(clockTick, 1000)
+    generateQuestion()
 }
 
 // Evaluate countdown timer
 function clockTick(){
     timeRemaining--;
     timerEl.textContent = timeRemaining;
+}
+
+// Pushes out question to the questionTitle h1 div
+function generateQuestion(){
+    let currentQuestion = questions[questionIndex];
+    questionTitleEl.textContent = currentQuestion.question;
+    questionChoicesEl.innerHTML = '';
+
+
+    // loop through choices array and makes a button for each element in the array
+    currentQuestion.choices.forEach(function(value){
+    
+        let tempbtn = document.createElement('button')
+        tempbtn.textContent = value;
+        tempbtn.setAttribute('class','button-choice')
+        tempbtn.setAttribute('value', value)
+        questionChoicesEl.appendChild(tempbtn)
+
+    })
 }
 
 startButtonEl.onclick= startQuiz
