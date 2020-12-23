@@ -7,6 +7,8 @@ let questionquestionEl = document.querySelector("#question-question")
 let questionChoicesEl = document.querySelector("#question-choices")
 let finalScoreEl = document.querySelector("#final-score")
 let initialsEl = document.querySelector("#initials")
+let startButtonEl = document.querySelector('#start-button')
+
 
 // Array of Objects containing question, choices, and answers
 var questions = [
@@ -42,5 +44,14 @@ var questions = [
     },
 ]
 
+// Hide question and final ztone on load of site
 questionZoneEl.style.display = 'none';
 finalZoneEl.style.display = 'none';
+
+//Hide start zone and display question zone on click
+function startQuiz() {
+    startScreenEl.style.display = 'none';
+    questionZoneEl.style.display = 'block';
+}
+
+startButtonEl.onclick= startQuiz
