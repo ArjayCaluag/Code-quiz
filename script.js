@@ -41,3 +41,6 @@ var questions = [
         answer: "square"
     },
 ]
+
+questionZoneEl.style.display = 'none';
+finalZoneEl.style.display = 'none';
