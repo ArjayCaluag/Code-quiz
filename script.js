@@ -52,18 +52,12 @@ questionZoneEl.style.display = 'none';
 finalZoneEl.style.display = 'none';
 
 //Hide start zone and display question zone on click
-// Interval is set onclick
+// Interval countdown clock is set onclick
 function startQuiz() {
     startScreenEl.style.display = 'none';
     questionZoneEl.style.display = 'block';
     timerId = setInterval(clockTick, 1000)
     generateQuestion()
-}
-
-// Evaluate countdown timer
-function clockTick(){
-    timeRemaining--;
-    timerEl.textContent = timeRemaining;
 }
 
 // Pushes out question to the questionTitle h1 div
@@ -72,7 +66,6 @@ function generateQuestion(){
     questionTitleEl.textContent = currentQuestion.question;
     questionChoicesEl.innerHTML = '';
 
-
     // loop through choices array and makes a button for each element in the array
     currentQuestion.choices.forEach(function(value){
     
@@ -80,9 +73,30 @@ function generateQuestion(){
         tempbtn.textContent = value;
         tempbtn.setAttribute('class','button-choice')
         tempbtn.setAttribute('value', value)
+        tempbtn.onclick = validateAnswer
         questionChoicesEl.appendChild(tempbtn)
 
     })
 }
+// Checks to see if userChoice is not equivalent to the value of correctAnswer. When an incorrect answer is chosen, 10 seconds is removed from timer and generates next question
+function validateAnswer(){
+    let userChoice = this.value
+    let correctAnswer = questions[questionIndex].answer
+
+    console.log(userChoice,correctAnswer)
+    if (userChoice !== correctAnswer){
+        timeRemaining -=10
+    }
+    questionIndex++
+    generateQuestion();
+}
+    
+// Evaluate countdown timer
+function clockTick(){
+    timeRemaining--;
+    timerEl.textContent = timeRemaining;
+
+}
+
 
 startButtonEl.onclick= startQuiz
